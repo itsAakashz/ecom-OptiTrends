@@ -1,4 +1,5 @@
 import React from 'react'
+import progress from "src/assets/images/progress3.png"
 import { Link } from 'react-router-dom';
 
 export const Checkout = () => {
@@ -9,7 +10,7 @@ export const Checkout = () => {
       <div className='flex flex-col'>
       <Link to="/"><p className='ml-24 lg:opacity-0 md:opacity-0 opacity-100'>←  Back</p></Link>
       <p className='text-center font-bold text-xl text-[#2C3E50]' >Checkout</p>
-      <img src="src/assets/images/progress3.png" className='self-center m-10' style={{width:"min-content"}}/>
+      <img src={progress} className='self-center m-10' style={{width:"min-content"}}/>
       <h1 className='text-center font-semibold text-lg text-[#2C3E50]'>Payment</h1>
       </div>
 
