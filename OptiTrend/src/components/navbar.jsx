@@ -19,11 +19,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <img
+            <Link to="/">
+               <img
               className="h-7 lg:h-full mt-2 w-auto"
               src={logo}
               alt="OptiTrends logo"
             />
+            </Link>
           </div>
           <div className="hidden lg:flex lg:space-x-8">
             <Link
