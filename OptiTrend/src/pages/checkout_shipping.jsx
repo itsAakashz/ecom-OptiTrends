@@ -6,7 +6,7 @@ export const checkout_shipping = () => {
   return (
     <div>
       <div className='flex flex-col' >
-      <Link to="/"><p className='ml-34 lg:opacity-0 md:opacity-0 opacity-100'>←  Back</p></Link>
+      <Link to="/checkout_summary"><p className='mt-10 lg:opacity-0 md:opacity-0 opacity-100'>←  Back</p></Link>
       <p className='text-center font-bold text-xl text-[#2C3E50]' >Checkout</p>
       <img src={progress} className='self-center m-10' style={{width:"min-content"}}/>
       <h1 className='text-center text-lg text-[#2C3E50] font-semibold'>Shipping Details</h1>
