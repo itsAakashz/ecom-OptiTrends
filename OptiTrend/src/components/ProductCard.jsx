@@ -16,12 +16,15 @@ const ProductCard = ({ name, price, image }) => {
           {price}
         </p>
       </div>
-        <button
+        <Link to="/cart">
+          <button
           className="mt-10 absolute bottom-4 left-1/2 transform -translate-x-1/2 transition-opacity duration-300 text-white lg:px-4 px-1 py-2 lg:py-2 rounded opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
           style={{ backgroundColor: "#2C3E50" }}
         >
           Add to Cart
         </button>
+        </Link>
+        
     </div>
   );
 }
