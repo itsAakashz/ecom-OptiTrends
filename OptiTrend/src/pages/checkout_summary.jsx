@@ -1,6 +1,7 @@
       import React from 'react';
       import ProductList from '../components/ProductList';
       import { Link } from 'react-router-dom';
+      import progress from "src/assets/images/progress1.png"
       import cartImage1 from "../assets/images/glasses/salt-image-1.png";
       import cartImage2 from "../assets/images/glasses/salt-image-10.png";
       import cartImage3 from "../assets/images/glasses/salt-image-5.png";
@@ -20,7 +21,7 @@
               </Link>
               <p className="text-center font-bold text-xl text-[#2C3E50]">Checkout</p>
               <img
-                src="src/assets/images/progress1.png"
+                src={progress}
                 className="self-center m-10 mx-auto w-2/3 lg:w-auto"
               />
               <p className="text-center text-lg font-semibold text-[#2C3E50]">
