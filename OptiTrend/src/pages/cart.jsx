@@ -118,10 +118,11 @@ const Cart = () => {
           <p className="text-sm text-gray-600 font-bold">Subtotal:</p>
           <p className="text-sm text-gray-600 font-bold">${subtotal}</p>
         </div>
-        <Link to="checkout_shipping"></Link>
+        <Link to="/checkout_shipping">
         <button className="content-center mt-5 w-[100%] h-10 text-[#FEFEFE] bg-[#2C3E50] text-white border-black rounded-[10px] border-2 border-solid text-black text-center">
           Next
         </button>
+         </Link>
         
       </div>
     </div>
