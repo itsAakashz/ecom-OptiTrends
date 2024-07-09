@@ -16,8 +16,8 @@ To set up the project locally, follow these steps:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/your-repo.git
-   cd your-repo
+   git clone https://github.com/tsAakashz/ecom-OptiTrends
+   cd ecom-OptiTrends
    ```
 2. **Install the dependencies:**
    ```sh
