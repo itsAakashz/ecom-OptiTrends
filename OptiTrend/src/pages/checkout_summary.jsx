@@ -1,7 +1,7 @@
       import React from 'react';
       import ProductList from '../components/ProductList';
       import { Link } from 'react-router-dom';
-      import progress from "src/assets/images/progress1.png"
+      import progress from "../assets/images/progress1.png"
       import cartImage1 from "../assets/images/glasses/salt-image-1.png";
       import cartImage2 from "../assets/images/glasses/salt-image-10.png";
       import cartImage3 from "../assets/images/glasses/salt-image-5.png";
