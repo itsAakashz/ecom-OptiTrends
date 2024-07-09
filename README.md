@@ -26,7 +26,9 @@ To set up the project locally, follow these steps:
 3. **Start the development server:**
    ```sh
    npm start
-   ```
+   ```sh
+
+   
 ##dependencies
 The project relies on the following major dependencies:
 
