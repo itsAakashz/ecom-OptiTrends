@@ -1,5 +1,5 @@
 import React from 'react'
-import progress from "src/assets/images/progress3.png"
+import progress from "../assets/images/progress3.png"
 import { Link } from 'react-router-dom';
 
 export const Checkout = () => {
