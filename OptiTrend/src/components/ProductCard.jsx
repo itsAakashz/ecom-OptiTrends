@@ -1,5 +1,6 @@
 import React from 'react';
 import { CiHeart } from "react-icons/ci";
+import { Link } from 'react-router-dom'
 
 const ProductCard = ({ name, price, image }) => {
   return (
