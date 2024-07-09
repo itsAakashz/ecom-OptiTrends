@@ -66,7 +66,7 @@ const Cart = () => {
                     className="w-28 lg:h-15 object-cover rounded md:w-[220px] md:h-[170]"
                   />
                   <div className="">
-                    <p className="text-gray-600 hidden sm:block">{Brand: ${item.brand} | Similar product from ${item.brand}}</p>
+                    <p className="text-gray-600 hidden sm:block">{`Brand: ${item.brand} | Similar product from ${item.brand}`}</p>
                     <h3 className="text-lg font-medium">{item.name}</h3>
                   </div>
                   <div className="text-right">
