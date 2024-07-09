@@ -10,7 +10,7 @@ import img7 from '../assets/images/glasses/salt-image-7.png';
 import img8 from '../assets/images/glasses/salt-image-3.png';
 import img9 from '../assets/images/glasses/salt-image-5.png';
 import img10 from '../assets/images/glasses/salt-image-10.png';
-
+import { Link } from "react-router-dom";
 const products = [
   {
     name: "Classic Black Frame",
@@ -98,18 +98,17 @@ const products = [
 
 const Shop = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
-      <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
-          <ProductCard
-            key={index}
-            name={product.name}
-            price={product.price}
-            image={product.image}
-          />
-        ))}
+    <>
+      <div className="container pt-5 p-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center gap-1">
+          {products.map((product) => (
+            <Link to="/details">
+              <ProductCard key={product.id} name={product.name} price={product.price} image={product.image}/>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
