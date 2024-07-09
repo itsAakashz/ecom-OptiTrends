@@ -66,7 +66,7 @@ export const checkout_shipping = () => {
             </div>
 
             <div className="mt-8 items-end float-left">
-          <Link to="/checkout_summary"><button className="text-[#2C3E50] border border-[#2C3E50] hidden sm:block px-auto py-auto rounded-lg  w-40 h-10">← Back</button></Link>
+          <Link to="/checkout"><button className="text-[#2C3E50] border border-[#2C3E50] hidden sm:block px-auto py-auto rounded-lg  w-40 h-10">← Back</button></Link>
         </div>
         <div className="mt-8 items-end float-right w-full lg:w-40 md:w-40">
           <Link to="/checkout"><button className="bg-[#2C3E50] text-white px-auto py-auto rounded-lg w-full lg:w-40 md:w-40  h-10 ">Next</button></Link>
