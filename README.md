@@ -29,7 +29,7 @@ To set up the project locally, follow these steps:
    ```sh
 
    
-##dependencies
+## Dependencies
 The project relies on the following major dependencies:
 
 <ul>
@@ -38,7 +38,7 @@ The project relies on the following major dependencies:
   <li>react-icons</li>
 </ul>
 
-##contributing
+## Contributing
 Contributions are welcome! Please follow these steps to contribute:
 1. Fork the repository.
 2. Create a new branch (git checkout -b feature/YourFeature).
