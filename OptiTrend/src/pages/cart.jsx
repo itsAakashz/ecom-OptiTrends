@@ -67,7 +67,7 @@ const Cart = () => {
 
   return (
     <div className="min-h-screen p-4">
-      <div className="container mx-auto bg-white shadow-md rounded-lg p-6">
+      <div className="container mx-auto bg-white rounded-lg p-6">
         {/* upper container here */}
         <div className="mt-6 flex justify-between items-center">
           <Link to="/">
