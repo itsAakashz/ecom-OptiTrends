@@ -8,7 +8,7 @@ export const Checkout = () => {
     
 
       <div className='flex flex-col'>
-      <Link to="/"><p className='ml-24 lg:opacity-0 md:opacity-0 opacity-100'>←  Back</p></Link>
+      <Link to="/checkout_shipping"><p className='mt-10 lg:opacity-0 md:opacity-0 opacity-100'>←  Back</p></Link>
       <p className='text-center font-bold text-xl text-[#2C3E50]' >Checkout</p>
       <img src={progress} className='self-center m-10' style={{width:"min-content"}}/>
       <h1 className='text-center font-semibold text-lg text-[#2C3E50]'>Payment</h1>
