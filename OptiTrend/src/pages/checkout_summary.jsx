@@ -95,7 +95,7 @@ const Checkout_Summary = () => {
           <p className="mt-5 absolute right-0">${subtotal.toFixed(2)}</p>
         </div>
       </div>
-      <Link to="/checkoutshipping">
+      <Link to="/checkout_shipping">
         <div className="w-5/6 mx-auto">
           <button className="bg-[#2C3E50] rounded text-white h-8 mt-10 w-full text-lg">
             Confirm Order
