@@ -1,43 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
-import minus_icon from "../assets/minus.png";
-import plus_icon from "../assets/plus.png";
-import cartImage1 from "../assets/images/glasses/salt-image-1.png";
-import cartImage2 from "../assets/images/glasses/salt-image-10.png";
-import cartImage3 from "../assets/images/glasses/salt-image-5.png";
-
-// Move Counter component outside of Checkout_Summary
-const Counter = () => {
-  const [count, setCount] = useState(1);
-
-  const handleIncrease = () => {
-    setCount(count + 1);
-  };
-
-  const handleDecrease = () => {
-    setCount(count - 1);
-  };
-
-  return (
-    <div className="flex mt-25 md:mt-0 ">
-      <Link className="pr-2 h-[40px] w-[40px]" onClick={handleDecrease}>
-        <img src={minus_icon} alt="Minus icon" />
-      </Link>
-      <p className="px-2 text-[18px]">{count}</p>
-      <Link className="pr-2 h-[40px] w-[40px]" onClick={handleIncrease}>
-        <img src={plus_icon} alt="Plus icon" />
-      </Link>
-    </div>
-  );
-};
+import { selectCartItems } from "../components/cartSelectors"; 
 
 const Checkout_Summary = () => {
-  const cartItems = [
-    { id: 1, name: "Modern Metal Frame", size: "28mm", price: 80, image: cartImage1 },
-    { id: 2, name: "Retro Round Frame", size: "30mm", price: 65, image: cartImage2 },
-    { id: 3, name: "Sophisticated Rimless", size: "24mm", price: 90, image: cartImage3 },
-  ];
+  const cartItems = useSelector(selectCartItems); // Use selector to get cart items from the store
+  const [subtotal, setSubtotal] = useState(0);
+
+  useEffect(() => {
+    // Calculate subtotal
+    const newSubtotal = cartItems.reduce((acc, item) => {
+      return acc + item.current_price[0].AUD[0] * item.quantity;
+    }, 0);
+    setSubtotal(newSubtotal);
+  }, [cartItems]);
 
   return (
     <div className="m-5 lg:m-9">
@@ -57,11 +34,10 @@ const Checkout_Summary = () => {
 
       <div className="space-y-5 lg:mx-9">
         {cartItems.map((item) => (
-          // product container Upper side
           <div key={item.id}>
             <div className="flex items-center justify-between mt-8">
               <img
-                src={item.image}
+                src={`https://api.timbu.cloud/images/${item.photos[0].url}`}
                 alt={item.name}
                 className="w-28 lg:h-15 h-[px] lg:mb-16 md:w-[220px] md:h-[170]"
               />
@@ -90,18 +66,11 @@ const Checkout_Summary = () => {
               </div>
               <div className="text-right lg:mr-4">
                 <p className="lg:text-[28px] text-[18px] font-bold">
-                  ${item.price}
+                  ${item.current_price[0]?.AUD
+                    ? `${item.current_price[0].AUD[0]}`
+                    : "Price Unavailable"}
                 </p>
               </div>
-            </div>
-            <div></div>
-            {/* // product container lower side */}
-            <div className="flex items-center justify-between p-1">
-              <button className="lg:w-[220px] px-1 lg:px-4 lg:p-0 p-1 lg:h-7 text-center border-black rounded border-[1px] border-solid text-black">
-                Remove Item
-              </button>
-
-              <Counter />
             </div>
           </div>
         ))}
@@ -123,7 +92,7 @@ const Checkout_Summary = () => {
         <hr />
         <div className="flex flex-wrap relative text-[#2C3E50]">
           <p className="mt-5">Subtotal</p>
-          <p className="mt-5 absolute right-0">$266.00</p>
+          <p className="mt-5 absolute right-0">${subtotal.toFixed(2)}</p>
         </div>
       </div>
       <Link to="/checkoutshipping">
