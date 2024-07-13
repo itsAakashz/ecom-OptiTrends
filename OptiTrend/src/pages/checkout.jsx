@@ -1,3 +1,5 @@
+// Checkout.js
+
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,14 +18,20 @@ export const Checkout = () => {
 
   useEffect(() => {
     if (!customerDetails || !customerDetails.fullName) {
-      // Fetch customer details from API or any other source
-      axios.get('/api/customer/details')
-        .then(response => {
-          dispatch(setCustomerDetails(response.data));
-        })
-        .catch(error => {
-          console.error('Failed to fetch customer details', error);
-        });
+      // Fetch customer details from local storage if not in Redux
+      const storedDetails = JSON.parse(localStorage.getItem('shippingDetails'));
+      if (storedDetails) {
+        dispatch(setCustomerDetails(storedDetails));
+      } else {
+        // Fetch customer details from API or any other source
+        axios.get('/api/customer/details')
+          .then(response => {
+            dispatch(setCustomerDetails(response.data));
+          })
+          .catch(error => {
+            console.error('Failed to fetch customer details', error);
+          });
+      }
     }
     console.log('Customer Details:', customerDetails);
   }, [customerDetails, dispatch]);

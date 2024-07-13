@@ -1,8 +1,14 @@
+// reducers/customerReducer.js
 
 const initialState = {
   fullName: '',
   email: '',
   phone: '',
+  address: '',
+  city: '',
+  state: '',
+  postalCode: '',
+  country: ''
 };
 
 const customerReducer = (state = initialState, action) => {

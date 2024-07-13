@@ -1,5 +1,9 @@
+// Checkout_shipping.js
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCustomerDetails } from '../actions/customerActions';
 
 const Checkout_shipping = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +17,7 @@ const Checkout_shipping = () => {
     country: ''
   });
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,11 +29,11 @@ const Checkout_shipping = () => {
   };
 
   const handleNext = () => {
-    // Save formData to local storage or Redux state if needed
-    localStorage.setItem('shippingDetails', JSON.stringify(formData));
+    // Save formData to Redux state
+    dispatch(setCustomerDetails(formData));
 
     // Navigate to the next step in checkout
-    navigate('/checkout'); // Use navigate to programmatically navigate
+    navigate('/checkout');
   };
 
   return (
