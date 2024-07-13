@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';  
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { selectCartItems } from '../components/cartSelectors';
-
+import { setCustomerDetails } from '../actions/customerActions';
 
 export const Checkout = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const customerDetails = useSelector((state) => state.customer);
   const [paymentMode, setPaymentMode] = useState('Credit Card');
@@ -13,13 +14,31 @@ export const Checkout = () => {
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!customerDetails || !customerDetails.fullName) {
+      // Fetch customer details from API or any other source
+      axios.get('/api/customer/details')
+        .then(response => {
+          dispatch(setCustomerDetails(response.data));
+        })
+        .catch(error => {
+          console.error('Failed to fetch customer details', error);
+        });
+    }
+    console.log('Customer Details:', customerDetails);
+  }, [customerDetails, dispatch]);
+
   const handlePaymentChange = (e) => {
     setPaymentMode(e.target.value);
+    console.log('Payment Mode Selected:', e.target.value);
   };
 
   const handleConfirmPayment = async () => {
     setLoading(true);
+    console.log('Confirm Payment Button Clicked');
     try {
+      console.log('Cart Items:', cartItems);
+
       const productsSold = cartItems.map(item => ({
         product_id: item.id,
         amount: item.current_price[0].AUD[0],
@@ -27,14 +46,44 @@ export const Checkout = () => {
         discount: item.discount || 0,
         currency_code: 'Dollar'
       }));
+      console.log('Products Sold:', productsSold);
 
-      const response = await axios.post('https://api.timbu.cloud/sales', {
-        organization_id: '4108723323df49b18157b4adb5631ef0', 
+      if (!customerDetails) {
+        console.error('Customer details are missing');
+        throw new Error('Customer details are missing');
+      }
+
+      console.log('Customer Details:', customerDetails);
+      if (!customerDetails.fullName) {
+        console.error('Customer full name is missing');
+        throw new Error('Customer full name is missing');
+      }
+
+      const [firstName, lastName] = customerDetails.fullName.split(' ');
+      if (!firstName || !lastName) {
+        console.error('Customer full name is incomplete');
+        throw new Error('Customer full name is incomplete');
+      }
+
+      if (!customerDetails.email) {
+        console.error('Customer email is missing');
+        throw new Error('Customer email is missing');
+      }
+
+      if (!customerDetails.phone) {
+        console.error('Customer phone number is missing');
+        throw new Error('Customer phone number is missing');
+      }
+
+      console.log('Customer Details Validated');
+
+      const response = await axios.post('/api/sales', {
+        organization_id: '4108723323df49b18157b4adb5631ef0',
         products_sold: productsSold,
         currency_code: 'Dollar',
-        customer_title: '', 
-        first_name: customerDetails.fullName.split(' ')[0],
-        last_name: customerDetails.fullName.split(' ')[1],
+        customer_title: '',
+        first_name: firstName,
+        last_name: lastName,
         email: customerDetails.email,
         phone: customerDetails.phone,
         country_code: '+91',
@@ -51,19 +100,25 @@ export const Checkout = () => {
         }
       });
 
+      console.log('API Response:', response);
+
       if (response.status === 200) {
         setMessage('Payment Done');
+        console.log('Payment Successful');
         setTimeout(() => {
           setMessage(null);
           navigate('/');
         }, 2000);
       } else {
         setMessage('Payment failed');
+        console.log('Payment Failed with Status:', response.status);
       }
     } catch (error) {
       setMessage('An error occurred: ' + error.message);
+      console.error('Payment Error:', error.message);
     } finally {
       setLoading(false);
+      console.log('Loading State Reset');
     }
   };
 
