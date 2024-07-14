@@ -24,7 +24,7 @@ export const Checkout = () => {
         dispatch(setCustomerDetails(storedDetails));
       } else {
         // Fetch customer details from API or any other source
-        axios.get('/api/customer/details')
+        axios.get('https://api.timbu.cloud/customer/details')
           .then(response => {
             dispatch(setCustomerDetails(response.data));
           })
