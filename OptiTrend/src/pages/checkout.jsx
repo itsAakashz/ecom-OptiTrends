@@ -85,7 +85,7 @@ export const Checkout = () => {
 
       console.log('Customer Details Validated');
 
-      const response = await axios.post('/api/sales', {
+      const response = await axios.post('https://api.timbu.cloud/sales', {
         organization_id: '4108723323df49b18157b4adb5631ef0',
         products_sold: productsSold,
         currency_code: 'Dollar',
