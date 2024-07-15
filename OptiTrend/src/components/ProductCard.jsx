@@ -20,7 +20,7 @@ const ProductCard = ({ id, name, price, image, addToCart }) => {
     <div>
       <div className="group relative border rounded-lg mt-10 overflow-hidden h-96 lg:w-72 lg:p-10 md:w-64 md:p-10 p-1">
         <div className="lg:group-hover:translate-y-[-50px] transition-transform duration-300">
-          <Link  to={`/product/${id}`}>
+          <Link  to={`/${id}`}>
           <img
             src={image}
             alt={name}
