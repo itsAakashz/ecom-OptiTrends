@@ -72,9 +72,9 @@ const Navbar = () => {
                   src={cart_icon}
                   alt="Cart icon"
                 />
-                <span className="absolute top-0 right-0 bg-red-500 text-white text-[8px] rounded-full px-1">
+{/*                 <span className="absolute top-0 right-0 bg-red-500 text-white text-[8px] rounded-full px-1">
                   3
-                </span>
+                </span> */}
               </Link>
 
               <span className="hidden lg:inline">Cart</span>
