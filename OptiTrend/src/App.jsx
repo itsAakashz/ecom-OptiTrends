@@ -18,7 +18,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Shop />} />
-           <Route path="/product/:productId" element={<ProductDetails />} />
+          <Route path="/:productId" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout_summary" element={<Checkout_summary />} />
            <Route path="/checkout_shipping" element={<Checkout_shipping />} />
