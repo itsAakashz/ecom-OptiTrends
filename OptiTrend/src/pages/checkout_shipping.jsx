@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCustomerDetails } from '../actions/customerActions';
+import progress from "../assets/images/progress2.png"
 
 const Checkout_shipping = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +42,7 @@ const Checkout_shipping = () => {
       <div className='flex flex-col'>
         <Link to="/"><p className='mt-10 lg:opacity-0 md:opacity-0 opacity-100'>← Back</p></Link>
         <p className='text-center font-bold text-xl text-[#2C3E50]'>Checkout</p>
-        <img src="src/assets/images/progress2.png" className='self-center m-10' style={{ width: "min-content" }} />
+        <img src={progress} className='self-center m-10' style={{ width: "min-content" }} />
         <h1 className='text-center text-lg text-[#2C3E50] font-semibold'>Shipping Details</h1>
       </div>
 
