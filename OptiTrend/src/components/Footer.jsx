@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/logo.png";
 import fb_icon from "../assets/fb_icon.png";
 import insta_icon from "../assets/insta_icon.png";
 import nintendo_icon from "../assets/nintendo_icon.png";
@@ -13,7 +14,7 @@ const Footer = () => {
             <div className="w-full text-center mb-8 lg:mb-0 lg:w-auto">
               <a href="/" className="flex justify-center lg:justify-start">
                 <img
-                  src="src/assets/logo.png"
+                  src={logo}
                   alt="Logo"
                   className="mx-auto lg:mx-0"
                 />
