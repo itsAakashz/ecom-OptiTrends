@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import progress from "../assets/images/progress1.png"
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
@@ -24,7 +25,7 @@ const Checkout_Summary = () => {
         </Link>
         <p className="text-center font-bold text-xl text-[#2C3E50]">Checkout</p>
         <img
-          src="src/assets/images/progress1.png"
+          src=""
           className="self-center m-10 mx-auto w-2/3 lg:w-auto"
         />
         <p className="text-center text-lg font-semibold text-[#2C3E50]">
