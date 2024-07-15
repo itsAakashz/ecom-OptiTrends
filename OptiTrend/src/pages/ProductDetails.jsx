@@ -12,7 +12,9 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`/api/products/${productId}?organization_id=4108723323df49b18157b4adb5631ef0&size=10&Appid=8N2C3J493DKH2J7&Apikey=b654bdaf159749e9a54345e54485e10c20240712132334365162`);
+        const response = await axios.get(
+          `https://timbu-get-single-product.reavdev.workers.dev/${productId}?organization_id=4108723323df49b18157b4adb5631ef0&size=10&Appid=8N2C3J493DKH2J7&Apikey=b654bdaf159749e9a54345e54485e10c20240712132334365162`,
+        );
         setProduct(response.data);
         setLoading(false);
       } catch (error) {
@@ -50,7 +52,9 @@ const ProductDetails = () => {
           />
         </div>
         <div className="flex flex-col ml-3 lg:ml-0 lg:mt-20 text-[#121A21]">
-          <p>Brand: {product.name} | Similar Product from {product.name}</p>
+          <p>
+            Brand: {product.name} | Similar Product from {product.name}
+          </p>
           <h1 className="text-xl font-semibold">{product.name}</h1>
           {product.description && (
             <p className="mt-5 mb-2">Description: {product.description}</p>
@@ -76,7 +80,8 @@ const ProductDetails = () => {
             <button className="w-10 h-10 bg-purple-600 rounded-full focus:opacity-30"></button>
           </div>
           <p className="text-xl font-bold mt-10">
-            Price: {product.current_price && product.current_price[0]?.AUD
+            Price:{" "}
+            {product.current_price && product.current_price[0]?.AUD
               ? `$${product.current_price[0].AUD}`
               : "Price Unavailable"}
           </p>
@@ -95,7 +100,9 @@ const ProductDetails = () => {
           <ProductCard
             name={product.name}
             price={
-              product.current_price && product.current_price.length > 0 && product.current_price[0]?.AUD 
+              product.current_price &&
+              product.current_price.length > 0 &&
+              product.current_price[0]?.AUD
                 ? `$${product.current_price[0].AUD[0]}`
                 : "Price Unavailable"
             }
